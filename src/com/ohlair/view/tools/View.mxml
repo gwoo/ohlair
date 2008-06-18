@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--/* SVN FILE: $Id$ */-->
+<ViewCtrl xmlns="com.ohlair.controller.tools.*" xmlns:mx="http://www.adobe.com/2006/mxml">
+
+	<mx:HBox width="100%" paddingTop="10" paddingLeft="10" paddingRight="10">
+
+		<mx:ComboBox id="service" dataProvider="{services}" creationComplete="change(event)" change="change(event)"/>
+	
+		<mx:Button  label="Submit" click="submit()"/>
+
+	</mx:HBox>
+	
+	<mx:Form id="form_options" />
+	
+	<mx:VBox id="vb_response" />
+	
+</ViewCtrl>

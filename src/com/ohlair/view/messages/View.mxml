@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--/* SVN FILE: $Id$ */-->
+<ViewCtrl xmlns="com.ohlair.controller.messages.*" xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:flux="http://openflux.googlecode.com" xmlns:containers="com.dougmccune.containers.*"
+	verticalGap="0" width="100%">
+    <mx:Script>
+    	<![CDATA[
+    		import flash.net.navigateToURL;
+    	]]>
+    </mx:Script>
+
+    <mx:ControlBar width="100%" horizontalAlign="right" paddingBottom="0" paddingTop="0" height="20">
+
+    	<mx:ComboBox id="type">
+    		<mx:Array>
+    			<mx:Object label="Projects" />
+    			<mx:Object label="Accounts" />
+    		</mx:Array>
+    	</mx:ComboBox>
+
+    	<mx:ComboBox id="search" editable="true" color="#000"
+    		change="change(event)"/>
+
+		<mx:Button  label="Submit" click="submit()" height="20"/>
+
+    </mx:ControlBar>
+    <containers:CoverFlowContainer id="coverflow" width="100%" height="100%"
+        horizontalGap="40" segments="{total}" reflectionEnabled="true"
+        buttonMode="true" useHandCursor="true" >
+
+        <!-- view.messages.Item added here -->
+
+    </containers:CoverFlowContainer>
+
+	<mx:HBox width="100%" horizontalCenter="0" paddingLeft="20" paddingRight="20">
+
+		<mx:LinkButton label="prev" click="prev()" buttonMode="true" useHandCursor="true" visible="{Boolean(total)}"
+			fontSize="20"/>
+
+		<mx:Spacer width="100%" />
+
+    	<mx:LinkButton label="next" click="next()" buttonMode="true" useHandCursor="true" visible="{Boolean(total)}"
+    		fontSize="20"/>
+
+	</mx:HBox>
+
+</ViewCtrl>

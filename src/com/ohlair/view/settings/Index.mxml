@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--/* SVN FILE: $Id$ */-->
+<IndexCtrl xmlns="com.ohlair.controller.settings.*" xmlns:mx="http://www.adobe.com/2006/mxml" showCloseButton="true" close="close()">
+	
+	<mx:Form width="100%" height="100%">
+		<mx:FormHeading label="Settings" />
+		<mx:FormItem label="Username">
+			<mx:TextInput id="txti_username" />
+		</mx:FormItem>
+		<mx:FormItem label="API Key">
+			<mx:TextInput id="txti_key" />
+		</mx:FormItem>
+		<mx:FormItem label=" ">
+			<mx:Button label="Submit" click="submit()" />
+		</mx:FormItem>
+	</mx:Form>
+	
+</IndexCtrl>
