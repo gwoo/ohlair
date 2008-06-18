@@ -1,4 +1,13 @@
-/* SVN FILE: $Id:$*/
+/**
+ * Description
+ *
+ * Ohlair
+ * Copyright 2008, Garrett Woodworth
+ *
+ * Licensed under The MIT License, http://www.opensource.org/licenses/mit-license.php
+ * Redistributions of files must retain the above copyright notice.
+ *
+ */
 package com.ohlair.config
 {
 	import com.fake.model.datasources.ConnectionManager;
@@ -21,27 +30,6 @@ package com.ohlair.config
 				case 'local':
 					ConnectionManager.instance.create('default',
 						{endpoint: "http://www.ohloh.net/", datasource: "Http"}
-					);
-					ConnectionManager.instance.create('google',
-						{endpoint: "http://www.google.com/group/", datasource: "Http"}
-					);
-				break;
-
-				case 'dev':
-					ConnectionManager.instance.create('default',
-						{endpoint: "http://localhost", datasource: "Amf"}
-					);
-				break;
-
-				case 'beta':
-					ConnectionManager.instance.create('default',
-						{endpoint: "http://localhost", datasource: "Amf"}
-					);
-				break;
-
-				case 'www':
-					ConnectionManager.instance.create('default',
-						{endpoint: "http://localhost", datasource: "Amf"}
 					);
 				break;
 			}

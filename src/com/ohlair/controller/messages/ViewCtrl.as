@@ -1,5 +1,14 @@
-/* SVN FILE: $Id$ */
-package com.ohlair.controller.messages
+/**
+ * Description
+ *
+ * Ohlair
+ * Copyright 2008, Garrett Woodworth
+ *
+ * Licensed under The MIT License, http://www.opensource.org/licenses/mit-license.php
+ * Redistributions of files must retain the above copyright notice.
+ *
+ */
+ package com.ohlair.controller.messages
 {
 	import com.dougmccune.containers.CoverFlowContainer;
 	import com.fake.controller.VBoxController;

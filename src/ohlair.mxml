@@ -6,19 +6,9 @@
  * Ohlair
  * Copyright 2008, Garrett Woodworth
  *
- * Licensed under The MIT License
+ * Licensed under The MIT License, http://www.opensource.org/licenses/mit-license.php
  * Redistributions of files must retain the above copyright notice.
  *
- * @filesource
- * @copyright		Copyright 2008, Garrett Woodworth
- * @link			http://github.com/gwoo/ohlair/
- * @package			ohlair
- * @subpackage		com.ohlair
- * @since			2008-03-06
- * @version			$Revision: 129 $
- * @modifiedby		$LastChangedBy: gwoo.cakephp $
- * @lastmodified	$Date: 2008-06-11 12:38:19 -0700 (Wed, 11 Jun 2008) $
- * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
  */
  -->
 <FakeApp xmlns="com.ohlair.*" xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute"

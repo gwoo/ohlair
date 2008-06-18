@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Description
+ *
+ * Ohlair
+ * Copyright 2008, Garrett Woodworth
+ *
+ * Licensed under The MIT License, http://www.opensource.org/licenses/mit-license.php
+ * Redistributions of files must retain the above copyright notice.
+ *
+ */
+ -->
 <mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml"
 	width="300" height="200">
 
