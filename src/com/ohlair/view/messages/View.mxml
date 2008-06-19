@@ -11,13 +11,8 @@
  *
  */
  -->
-<ViewCtrl xmlns="com.ohlair.controller.messages.*" xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:flux="http://openflux.googlecode.com" xmlns:containers="com.dougmccune.containers.*"
+<ViewCtrl xmlns="com.ohlair.controller.messages.*" xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:containers="com.dougmccune.containers.*"
 	verticalGap="0" width="100%">
-    <mx:Script>
-    	<![CDATA[
-    		import flash.net.navigateToURL;
-    	]]>
-    </mx:Script>
 
     <mx:ControlBar width="100%" horizontalAlign="right" paddingBottom="0" paddingTop="0" height="20">
 
@@ -34,11 +29,12 @@
 		<mx:Button  label="Submit" click="submit()" height="20"/>
 
     </mx:ControlBar>
+
     <containers:CoverFlowContainer id="coverflow" width="100%" height="100%"
         horizontalGap="40" segments="{total}" reflectionEnabled="true"
         buttonMode="true" useHandCursor="true" >
 
-        <!-- view.messages.Item added here -->
+        <!-- view.messages.Entry added here -->
 
     </containers:CoverFlowContainer>
 

@@ -14,8 +14,9 @@
 	import com.fake.controller.VBoxController;
 	import com.fake.model.ResultSet;
 	import com.fake.utils.SetUtil;
+	import com.ohlair.model.Item;
 	import com.ohlair.model.Message;
-	import com.ohlair.view.messages.Item;
+	import com.ohlair.view.messages.Entry;
 
 	import flash.events.Event;
 	import flash.events.KeyboardEvent;
@@ -117,14 +118,10 @@
 
 			for each(var item:Object in data.item)
 			{
-				var message:Item = new Item();
-				message.data = item;
+				var entry:Entry = new Entry();
+				entry.data = new Item(item);
 
-				message.data.header = String(item.description).split("tags:").pop();
-				message.data.pubDate = String(item.pubDate).split("+").shift();
-				message.data.author = item.source.value;
-				message.data.url = item.source.url;
-				coverflow.addChild(message);
+				coverflow.addChild(entry);
 			}
 		}
 

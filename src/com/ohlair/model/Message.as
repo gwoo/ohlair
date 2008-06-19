@@ -14,9 +14,10 @@ package com.ohlair.model
 
 	public dynamic class Message extends Model
 	{
+
 		public function Message()
 		{
-
+			super();
 		}
 
 		override protected function _service(method:String, args:Object = null):String

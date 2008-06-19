@@ -13,7 +13,15 @@ WindowedApplication {
 .headerA {
 	color: #555;	
 }
-
-.author {
-	font-size: 15;
+.entryTitle {
+	font-size: 16;
+}
+.entryAuthor {
+	font-size: 20;
+}
+.entryTags {
+	background-color: #fff;
+	background-disabled-color: #fff;
+	padding-bottom: 0;
+	padding-top: 0
 }
