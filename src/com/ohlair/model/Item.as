@@ -13,7 +13,7 @@ package com.ohlair.model
 	import com.fake.model.Model;
 
 	[Bindable]
-	public class Item extends Model
+	public dynamic class Item extends Model
 	{
 		public var title:String;
 		public var description:String;

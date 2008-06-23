@@ -20,6 +20,12 @@ package com.ohlair.model
 			super();
 		}
 
+		public function add(listener:Function, data:Object, params:Object):void
+		{
+			var consumer:OhConsumer = new OhConsumer();
+			consumer.post("/accounts/me/messages.xml", listener, data, params);
+		}
+
 		override protected function _service(method:String, args:Object = null):String
 		{
 			if (args.hasOwnProperty("id")) {

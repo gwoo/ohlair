@@ -24,7 +24,7 @@
 	<name>Ohlair</name>
 
 	<!-- An application version designator (such as "v1", "2.5", or "Alpha 1"). Required. -->
-	<version>v1</version>
+	<version>alpha</version>
 
 	<!-- Description, displayed in the AIR application installer. Optional. -->
 	<!-- <description>Let your Ohloh journal flow through air</description> -->
@@ -42,7 +42,7 @@
 		<!-- <title>Ohlair</title> -->
 
 		<!-- The type of system chrome to use (either "standard" or "none"). Optional. Default standard. -->
-		<!-- <systemChrome></systemChrome> -->
+		<!-- <systemChrome>none</systemChrome> -->
 
 		<!-- Whether the window is transparent. Only applicable when systemChrome is false. Optional. Default false. -->
 		<!-- <transparent></transparent> -->
@@ -72,10 +72,10 @@
 		<!-- <y></y> -->
 
 		<!-- The window's minimum size, specified as a width/height pair, such as "400 200". Optional. -->
-		<!-- <minSize>500</minSize> -->
+		<!-- <minSize>500 500</minSize> -->
 
 		<!-- The window's initial maximum size, specified as a width/height pair, such as "1600 1200". Optional. -->
-		<!-- <maxSize>500</maxSize> -->
+		<!-- <maxSize>500 500</maxSize> -->
 	</initialWindow>
 
 	<!-- The subpath of the standard default installation location to use. Optional. -->

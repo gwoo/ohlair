@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Description
+ *
+ * Ohlair
+ * Copyright 2008, Garrett Woodworth
+ *
+ * Licensed under The MIT License, http://www.opensource.org/licenses/mit-license.php
+ * Redistributions of files must retain the above copyright notice.
+ *
+ */
+ -->
+<IndexCtrl xmlns="com.ohlair.controller.settings.*" xmlns:mx="http://www.adobe.com/2006/mxml" width="300">
+	<mx:VBox height="100" width="100%" horizontalAlign="center" verticalAlign="middle">
+		<mx:Text text="{data}"/>
+		<mx:Button label="Ok" click="closeVerifyAccess()"/>
+	</mx:VBox>
+</IndexCtrl>

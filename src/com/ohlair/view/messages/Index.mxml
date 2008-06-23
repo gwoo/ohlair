@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Description
+ *
+ * Ohlair
+ * Copyright 2008, Garrett Woodworth
+ *
+ * Licensed under The MIT License, http://www.opensource.org/licenses/mit-license.php
+ * Redistributions of files must retain the above copyright notice.
+ *
+ */
+ -->
+<IndexCtrl xmlns="com.ohlair.controller.messages.*" xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:messages="com.ohlair.view.messages.*" xmlns:components="com.pfp.components.*">
+
+	<components:CubeStack id="vs" width="100%" height="100%">
+
+		<messages:View label="read" width="100%" height="100%"/>
+
+		<messages:Add label="post" width="100%" height="100%" paddingTop="20"/>
+
+	</components:CubeStack>
+
+	<mx:LinkButton id="btn_switch" click="handleSwitch(event)" top="-5" left="3"
+		buttonMode="true" useHandCursor="true" fontSize="20" styleName="nav"/>
+
+</IndexCtrl>

@@ -1,5 +1,5 @@
 WindowedApplication {
-	background-gradient-colors:#999, #ccc;
+	background-gradient-colors:#ccc, #f4f4f4;
 }
 .h1 {
 	font-size: 30;
@@ -24,4 +24,19 @@ WindowedApplication {
 	background-disabled-color: #fff;
 	padding-bottom: 0;
 	padding-top: 0
+}
+FormItem {
+	vertical-gap: 0;
+}
+
+LinkButton.nav
+{
+	color: #ffffff;
+	selectionColor:#aaaaaa;
+	disabledColor:#ffffff;
+	textRollOverColor: 000;
+	textSelectedColor:000;
+	textDisabledColor: #1e1e1e;
+	fontWeight: "normal";
+	separatorColor: #808080;
 }

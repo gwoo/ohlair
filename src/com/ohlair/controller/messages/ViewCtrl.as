@@ -14,6 +14,7 @@
 	import com.fake.controller.VBoxController;
 	import com.fake.model.ResultSet;
 	import com.fake.utils.SetUtil;
+	import com.ohlair.FakeApp;
 	import com.ohlair.model.Item;
 	import com.ohlair.model.Message;
 	import com.ohlair.view.messages.Entry;
@@ -46,7 +47,6 @@
 		{
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 		}
-
 
 		public function change(event:Event):void
 		{
@@ -125,20 +125,23 @@
 			}
 		}
 
-		protected function onKeyDown(event:KeyboardEvent):void
+		public function onKeyDown(event:KeyboardEvent):void
 		{
-			switch(event.keyCode)
+			if (FakeApp.instance.current == "view")
 			{
-				case Keyboard.RIGHT:
-					next();
-				break;
+				switch(event.keyCode)
+				{
+					case Keyboard.RIGHT:
+						next();
+					break;
 
-				case Keyboard.LEFT:
-					prev();
-				break;
-				case Keyboard.ENTER:
-					submit();
-				break;
+					case Keyboard.LEFT:
+						prev();
+					break;
+					case Keyboard.ENTER:
+						submit();
+					break;
+				}
 			}
 		}
 	}

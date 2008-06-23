@@ -14,7 +14,7 @@ package com.ohlair.controller.tools
 	import com.fake.model.ResultSet;
 	import com.ohlair.FakeApp;
 	import com.ohlair.model.Tool;
-	
+
 	import mx.containers.Form;
 	import mx.containers.FormItem;
 	import mx.containers.VBox;
@@ -73,9 +73,9 @@ package com.ohlair.controller.tools
 				FakeApp.instance.openSettings();
 				return;
 			}
-			
+
 			var key:String = FakeApp.instance.cookie.data.key;
-			
+
 			var tool:Tool = new Tool();
 
 			var fields:Array = findByType([TextInput], form_options);
@@ -96,7 +96,7 @@ package com.ohlair.controller.tools
 				return;
 			}
 			vb_response.removeAllChildren();
-			
+
 			if (result.response.status == 'success')
 			{
 				vb_response.addChild(handleResponse(result.response.result));

@@ -12,9 +12,10 @@ package com.ohlair
 {
 	import com.ohlair.config.Environment;
 	import com.ohlair.view.settings.Index;
-	
+
 	import flash.net.SharedObject;
-	
+
+	import mx.core.Application;
 	import mx.core.WindowedApplication;
 	import mx.events.FlexEvent;
 	import mx.events.IndexChangedEvent;
@@ -23,7 +24,9 @@ package com.ohlair
 	public class FakeApp extends WindowedApplication
 	{
 		[Bindable] public var cookie:SharedObject = SharedObject.getLocal("cookie");
-		
+
+		public var current:String;
+
 		private static var _instance:FakeApp;
 		public static function get instance():FakeApp {
 			return _instance;
@@ -36,28 +39,37 @@ package com.ohlair
 
 			addEventListener(FlexEvent.PREINITIALIZE, onPreinitialize);
 			addEventListener(FlexEvent.PREINITIALIZE, onCreationComplete);
+			Application.application.addEventListener(FlexEvent.APPLICATION_COMPLETE, onAppComplete);
 		}
-		
-		public function onPreinitialize(event:FlexEvent):void
+
+		private function onPreinitialize(event:FlexEvent):void
 		{
 			var environment:Environment = new Environment();
-		}		
-		
+		}
+
 		private function onCreationComplete(event:FlexEvent):void
 		{
 
 		}
-		
+
+		private function onAppComplete(event:FlexEvent):void
+		{
+			if (!cookie.data.hasOwnProperty("oauth_token"))
+			{
+				openSettings();
+			}
+		}
+
 		public function openSettings():void
 		{
 			var settings:Index = new Index();
 			PopUpManager.addPopUp(settings, this);
 			PopUpManager.centerPopUp(settings);
 		}
-		
+
 		public function tabChange(event:IndexChangedEvent):void
 		{
-			
+
 		}
 	}
 }

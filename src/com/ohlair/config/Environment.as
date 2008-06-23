@@ -19,7 +19,7 @@ package com.ohlair.config
 		public function Environment()
 		{
 			ConfigManager.instance.app = "ohlair";
-			ConfigManager.instance.environment = "local";
+			ConfigManager.instance.environment = "release";
 			loaded(null);
 		}
 
@@ -27,10 +27,33 @@ package com.ohlair.config
 		{
 			switch(ConfigManager.instance.environment)
 			{
-				case 'local':
-					ConnectionManager.instance.create('default',
-						{endpoint: "http://www.ohloh.net/", datasource: "Http"}
-					);
+				case 'dev':
+					ConnectionManager.instance.create('default',{
+						endpoint: "http://www.ohloh.net/", datasource: "Http", debug: true
+					});
+
+					//the oauth setting does not have a trailing slash
+					ConnectionManager.instance.create('oauth',{
+						endpoint: "http://localhost:57277", datasource: "Loader", debug: true,
+						dataFormat: "variables", method: "POST"
+					});
+
+					//this is a test server to term.ie but need to remember to adjust the calls
+					ConnectionManager.instance.create('oauth-test',{
+						endpoint: "http://localhost:57989", datasource: "Loader", debug: true,
+						dataFormat: "variables", method: "POST"
+					});
+				break;
+				case 'release':
+					ConnectionManager.instance.create('default',{
+						endpoint: "http://www.ohloh.net/", datasource: "Http"
+					});
+
+					//the oauth setting does not have a trailing slash
+					ConnectionManager.instance.create('oauth',{
+						endpoint: "http://www.ohloh.net", datasource: "Loader",
+						dataFormat: "variables", method: "POST"
+					});
 				break;
 			}
 
