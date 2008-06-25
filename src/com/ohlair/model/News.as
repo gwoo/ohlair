@@ -20,7 +20,7 @@ package com.ohlair.model
 		public var date:String;
 		public var url:String;
 		public var author:String;
-
+		
 		public function News(data:Object = null)
 		{
 			super();
@@ -32,6 +32,7 @@ package com.ohlair.model
 				url = data.account.url;
 				author = data.account.value;
 			}
+			
 		}
 
 

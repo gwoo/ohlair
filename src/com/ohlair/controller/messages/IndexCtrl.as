@@ -50,12 +50,12 @@ package com.ohlair.controller.messages
 			if (vs.selectedIndex == 0)
 			{
 				next = vs.getChildAt(1) as Container;
-				FakeApp.instance.current = "view";
+				FakeApp.instance.current = "Read";
 			}
 			else
 			{
 				next = vs.getChildAt(0) as Container;
-				FakeApp.instance.current = "add";
+				FakeApp.instance.current = "Post";
 			}
 
 			btn_switch.label = next.label;

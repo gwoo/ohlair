@@ -70,7 +70,7 @@ package com.ohlair.controller.messages
 				{
 					list_previous.dataProvider = new ArrayCollection();
 				}
-				list_previous.dataProvider.addItem({label: txta_body.text});
+				ArrayCollection(list_previous.dataProvider).addItemAt({label: txta_body.text}, 0);
 
 				txta_body.text = "";
 			}
@@ -80,9 +80,9 @@ package com.ohlair.controller.messages
 			}
 		}
 
-		protected function onKeyDown(event:KeyboardEvent):void
+		private function onKeyDown(event:KeyboardEvent):void
 		{
-			if (FakeApp.instance.current == "add")
+			if (FakeApp.instance.current == "Post")
 			{
 				switch(event.keyCode)
 				{

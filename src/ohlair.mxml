@@ -12,7 +12,7 @@
  */
  -->
 <FakeApp xmlns="com.ohlair.*" xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute"
-	xmlns:fx="com.fx.*" xmlns:messages="com.ohlair.view.messages.*" xmlns:tools="com.ohlair.view.tools.*" xmlns:news="com.ohlair.view.news.*">
+	xmlns:fx="com.fx.*" xmlns:messages="com.ohlair.view.messages.*" xmlns:tools="com.ohlair.view.tools.*" xmlns:news="com.ohlair.view.news.*" xmlns:components="com.pfp.components.*">
 	<mx:Script></mx:Script>
 
 	<mx:Style source="assets/styles/darkroom.css"/>
@@ -20,26 +20,33 @@
 
 	<mx:Canvas width="100%" height="70" verticalScrollPolicy="off">
 
-		<mx:HBox horizontalGap="0" paddingTop="39" paddingLeft="10" paddingRight="10">
+		<mx:HBox horizontalGap="0" paddingTop="36" paddingLeft="10" paddingRight="10">
 			<mx:Label text="Ohlair" styleName="h1"/>
-			<mx:Label text="(alpha)" styleName="em"/>			
 		</mx:HBox>
-		
+
 		<mx:HBox top="0" right="10" visible="{!settings}">
 			<mx:LinkButton label="Settings" fontSize="10" click="openSettings()" styleName="headerA"/>
 		</mx:HBox>
 
 	</mx:Canvas>
 
-	<mx:TabNavigator id="reader" width="100%" height="90%" right="10" left="10" bottom="20" top="40" change="tabChange(event)"
-		buttonMode="true" useHandCursor="true" borderStyle="solid" horizontalAlign="right">
 
-		<messages:Index label="Journal" width="100%" height="100%" />
-		
-		<news:View label="News" width="100%" height="100%" />
+	<mx:ViewStack id="vs" width="100%" height="100%" top="60" right="10" left="10"  bottom="10"
+		styleName="stack">
 
-		<tools:View	label="Tools" width="100%" height="100%" />
+		<messages:Add label="Post" width="100%" height="100%" styleName="stackItem"/>
 
-	</mx:TabNavigator>
+		<messages:View label="Read" width="100%" height="100%" styleName="stackItem"/>
+
+		<news:View label="News" width="100%" height="100%" styleName="stackItem"/>
+
+		<tools:View	label="Tools" width="100%" height="100%" styleName="stackItem"/>
+
+	</mx:ViewStack>
+
+	<mx:TabBar id="tabs" dataProvider="{vs}" horizontalAlign="right" top="37" right="10" itemClick="tabChange(event)"
+		buttonMode="true" useHandCursor="true" />
+
+	<mx:Label text="alpha2" styleName="em" left="90" top="50" />
 
 </FakeApp>

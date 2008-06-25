@@ -125,9 +125,9 @@
 			}
 		}
 
-		public function onKeyDown(event:KeyboardEvent):void
+		private function onKeyDown(event:KeyboardEvent):void
 		{
-			if (FakeApp.instance.current == "view")
+			if (FakeApp.instance.current == "read")
 			{
 				switch(event.keyCode)
 				{

@@ -10,24 +10,26 @@
  */
 package com.ohlair
 {
+	import com.adobe.air.notification.NotificationClickedEvent;
 	import com.ohlair.config.Environment;
 	import com.ohlair.controller.settings.IndexCtrl;
 	import com.ohlair.model.Settings;
 	import com.ohlair.view.settings.Index;
 
-	import flash.net.SharedObject;
-
+	import mx.controls.TabBar;
 	import mx.core.Application;
 	import mx.core.WindowedApplication;
 	import mx.events.FlexEvent;
-	import mx.events.IndexChangedEvent;
+	import mx.events.ItemClickEvent;
 	import mx.managers.PopUpManager;
 
 	public class FakeApp extends WindowedApplication
 	{
 		[Bindable] public var settings:Settings;
 
-		public var current:String;
+		[Bindable] public var current:String;
+
+		public var tabs:TabBar;
 
 		private static var _instance:FakeApp;
 		public static function get instance():FakeApp {
@@ -52,6 +54,7 @@ package com.ohlair
 
 		private function onAppComplete(event:FlexEvent):void
 		{
+			current = "Post";
 
 			if (!FakeApp.instance.settings.oauth_token)
 			{
@@ -74,9 +77,16 @@ package com.ohlair
 			PopUpManager.centerPopUp(settings);
 		}
 
-		public function tabChange(event:IndexChangedEvent):void
+		public function tabChange(event:Event):void
 		{
+			if (event is NotificationClickedEvent)
+			{
+				current = "News";
+				tabs.selectedIndex = 2;
+				return;
+			}
 
+			current = ItemClickEvent(event).label;
 		}
 	}
 }

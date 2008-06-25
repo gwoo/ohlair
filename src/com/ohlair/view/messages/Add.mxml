@@ -26,9 +26,8 @@
 	<mx:DataGrid id="list_previous"
             visible = "true" wordWrap="true"
             width="100%" height="100%" fontSize="14"
-            showHeaders="false" verticalScrollPolicy="auto"
+            showHeaders="false" variableRowHeight="true" verticalScrollPolicy="auto"
             paddingBottom="10" paddingTop="10" paddingLeft="10" paddingRight="10"
-
      />
 
 </AddCtrl>

@@ -44,7 +44,7 @@ package com.ohlair.controller.tools
 
 		private function init(event:FlexEvent):void
 		{
-			FakeApp.instance.current = "tools";
+			FakeApp.instance.current = "Tools";
 			
 			var tool:Tool = new Tool();
 			 services = tool.services;

@@ -45,3 +45,21 @@ List {
 	background-color: #808080;
 	borderStyle: none;
 }
+
+.stack {
+	background-color: #3e3e3e;
+	border-color: #000;
+	border-style: solid;
+	border-thickness: 1;
+}
+
+.stackItem {
+	background-color: #3e3e3e;
+	padding-top: 10;
+}
+
+.list {
+	fontSize: 14;
+	backgroundColor: #cccccc;
+	color: #fff;
+}
