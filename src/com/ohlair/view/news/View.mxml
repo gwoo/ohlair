@@ -11,7 +11,7 @@
  *
  */
  -->
-<ViewCtrl xmlns="com.ohlair.controller.news.*" xmlns:mx="http://www.adobe.com/2006/mxml">
+<ViewCtrl xmlns="com.ohlair.controller.news.*" xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:containers="com.dougmccune.containers.*">
 	<mx:ControlBar width="100%" horizontalAlign="right" paddingBottom="0" paddingTop="0" height="20">
 
 		<mx:CheckBox id="chk_filter" selected="true" label="filter" height="15" toolTip="When checked, the account will not appear in the results"/>
@@ -21,9 +21,10 @@
 
     </mx:ControlBar>
 
-    <mx:Canvas width="100%" height="100%" horizontalScrollPolicy="off">
+    <mx:Canvas id="cv_results" width="100%" height="100%" horizontalScrollPolicy="off">
     	<mx:VBox id="vb_results" width="100%" paddingTop="10" paddingLeft="10" paddingRight="20"/>
     </mx:Canvas>
+
 
     <mx:HBox width="100%" horizontalCenter="0" paddingLeft="20" paddingRight="20">
 
