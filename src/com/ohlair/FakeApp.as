@@ -11,6 +11,8 @@
 package com.ohlair
 {
 	import com.ohlair.config.Environment;
+	import com.ohlair.controller.settings.IndexCtrl;
+	import com.ohlair.model.Settings;
 	import com.ohlair.view.settings.Index;
 
 	import flash.net.SharedObject;
@@ -23,7 +25,7 @@ package com.ohlair
 
 	public class FakeApp extends WindowedApplication
 	{
-		[Bindable] public var cookie:SharedObject = SharedObject.getLocal("cookie");
+		[Bindable] public var settings:Settings;
 
 		public var current:String;
 
@@ -37,8 +39,9 @@ package com.ohlair
 			super();
 			_instance = this;
 
+			FakeApp.instance.settings = new Settings();
+
 			addEventListener(FlexEvent.PREINITIALIZE, onPreinitialize);
-			addEventListener(FlexEvent.PREINITIALIZE, onCreationComplete);
 			Application.application.addEventListener(FlexEvent.APPLICATION_COMPLETE, onAppComplete);
 		}
 
@@ -47,16 +50,20 @@ package com.ohlair
 			var environment:Environment = new Environment();
 		}
 
-		private function onCreationComplete(event:FlexEvent):void
-		{
-
-		}
-
 		private function onAppComplete(event:FlexEvent):void
 		{
-			if (!cookie.data.hasOwnProperty("oauth_token"))
+
+			if (!FakeApp.instance.settings.oauth_token)
 			{
-				openSettings();
+				if (FakeApp.instance.settings.key && FakeApp.instance.settings.secret)
+				{
+					var settings:IndexCtrl = new IndexCtrl();
+					settings.submit();
+				}
+				else
+				{
+					openSettings();
+				}
 			}
 		}
 

@@ -18,22 +18,22 @@ package com.ohlair.controller.messages
 	import flash.events.KeyboardEvent;
 	import flash.ui.Keyboard;
 
+	import mx.collections.ArrayCollection;
 	import mx.controls.Alert;
+	import mx.controls.DataGrid;
 	import mx.controls.TextArea;
 	import mx.core.Application;
 	import mx.events.FlexEvent;
-	import mx.events.ValidationResultEvent;
-	import mx.validators.Validator;
 
 	public class AddCtrl extends VBoxController
 	{
-
-		[Bindable] public var txta_body:TextArea;
-		public var bodyValidator:Validator;
+		public var txta_body:TextArea;
+		public var list_previous:DataGrid;
 
 		public function AddCtrl()
 		{
 			super();
+			data = new Array();
 			Application.application.addEventListener(FlexEvent.APPLICATION_COMPLETE, __appComplete);
 		}
 
@@ -49,7 +49,10 @@ package com.ohlair.controller.messages
 				return;
 			}
 			var message:Message = new Message();
-			message.add(onAdd, FakeApp.instance.cookie.data, {'message[body]': txta_body.text});
+
+			var data:Object = FakeApp.instance.settings.vo;
+
+			message.add(onAdd, data, {'message[body]': txta_body.text});
 		}
 
 		private function onAdd(result:ResultSet):void
@@ -61,8 +64,15 @@ package com.ohlair.controller.messages
 			var xmlResult:XML = new XML(result.data);
 			if (xmlResult..status == 'success')
 			{
-				txta_body.text = "";
 				Alert.show("Nice!");
+
+				if (!list_previous.dataProvider)
+				{
+					list_previous.dataProvider = new ArrayCollection();
+				}
+				list_previous.dataProvider.addItem({label: txta_body.text});
+
+				txta_body.text = "";
 			}
 			else
 			{

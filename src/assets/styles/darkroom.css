@@ -657,20 +657,20 @@ DataGrid
 	headerStyleName: "dataGridHeader";
 	headerColors: #222222, #222222;
 	color:#aaaaaa;
-	rollOverColor: #333333;
+	rollOverColor: #222222;
 	selectionColor: #333333;
-	disabledColor: #1e1e1e;
+	disabledColor: #333333;
 	textRollOverColor:#ffffff;
 	textSelectedColor:#ffffff;
-	selectiondDisabledColor: #1e1e1e;
+	selectiondDisabledColor: #333333;
 	verticalGridLines: false;
-	alternatingItemColors: #3e3e3e, #3e3e3e;
+	alternatingItemColors: #333333, #3e3e3e;
 	/*backgroundImage: Embed(source="/assets/skins/darkroom.swf",symbol="lightGrey_Bg");
 	backgroundSize:"100%";*/
 	backgroundColor: #3e3e3e;
 	borderStyle: solid;
 	borderColor:#000000;
-	borderThickness:1;
+	borderThickness:0;
 }
 
 /*

@@ -14,13 +14,13 @@ package com.ohlair.controller.tools
 	import com.fake.model.ResultSet;
 	import com.ohlair.FakeApp;
 	import com.ohlair.model.Tool;
-
+	
 	import mx.containers.Form;
 	import mx.containers.FormItem;
 	import mx.containers.VBox;
 	import mx.controls.Alert;
 	import mx.controls.ComboBox;
-	import mx.controls.Text;
+	import mx.controls.TextArea;
 	import mx.controls.TextInput;
 	import mx.core.UIComponent;
 	import mx.events.FlexEvent;
@@ -44,6 +44,8 @@ package com.ohlair.controller.tools
 
 		private function init(event:FlexEvent):void
 		{
+			FakeApp.instance.current = "tools";
+			
 			var tool:Tool = new Tool();
 			 services = tool.services;
 		}
@@ -68,13 +70,16 @@ package com.ohlair.controller.tools
 
 		public function submit():void
 		{
-			if (!FakeApp.instance.cookie.data.hasOwnProperty("key") && FakeApp.instance.cookie.data.key) {
+			//var data:Object = FakeApp.instance.cookie.data;
+			var data:Object = FakeApp.instance.settings;
+
+			if (!data.hasOwnProperty("key") && !data.key) {
 				Alert.show("You need to add you API key");
-				FakeApp.instance.openSettings();
+				//FakeApp.instance.openSettings();
 				return;
 			}
 
-			var key:String = FakeApp.instance.cookie.data.key;
+			var key:String = data.key;
 
 			var tool:Tool = new Tool();
 
@@ -107,32 +112,39 @@ package com.ohlair.controller.tools
 			}
 		}
 
-		protected function handleResponse(response:Object, parent:UIComponent = null):UIComponent
+		protected function handleResponse(response:Object, parent:TextArea = null):UIComponent
 		{
+			var text:TextArea = new TextArea();
+			text.percentWidth = 100;
+			text.percentHeight = 100;
 			for (var key:* in response)
 			{
 				var value:* = response[key];
-				var child:VBox = new VBox();
 
 				if (value is ObjectProxy)
 				{
-					handleResponse(value, child);
-				}
-				else
-				{
-					var text:Text = new Text();
-					text.text = value;
-					if (parent !== null)
+					if (parent)
 					{
-						parent.addChild(text);
+						handleResponse(value, parent);
 					}
 					else
 					{
-						child.addChild(text);
+						handleResponse(value, text);
+					}
+				}
+				else
+				{
+					if (parent)
+					{
+						parent.text += key + ":" + value +"\n";
+					}
+					else
+					{
+						text.text += key + ": " + value +"\n";
 					}
 				}
 			}
-			return child;
+			return text;
 		}
 	}
 }

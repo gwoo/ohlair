@@ -15,7 +15,7 @@ package com.ohlair.controller.settings
 	import com.ohlair.model.OhConsumer;
 	import com.ohlair.view.settings.VerifyAccess;
 	import com.ohlair.view.settings.VerifyRequest;
-
+	
 	import mx.containers.TitleWindow;
 	import mx.controls.Alert;
 	import mx.controls.Button;
@@ -42,19 +42,10 @@ package com.ohlair.controller.settings
 		public function init(event:FlexEvent):void
 		{
 			if (txti_username)
-			{
-				if (FakeApp.instance.cookie.data.hasOwnProperty("username"))
-				{
-					txti_username.text = FakeApp.instance.cookie.data.username;
-				}
-				if (FakeApp.instance.cookie.data.hasOwnProperty("key"))
-				{
-					txti_key.text = FakeApp.instance.cookie.data.key;
-				}
-				if (FakeApp.instance.cookie.data.hasOwnProperty("secret"))
-				{
-					txti_secret.text = FakeApp.instance.cookie.data.secret;
-				}
+			{	
+				txti_username.text = FakeApp.instance.settings.username;
+				txti_key.text = FakeApp.instance.settings.key;
+				txti_secret.text = FakeApp.instance.settings.secret;
 			}
 		}
 
@@ -65,12 +56,22 @@ package com.ohlair.controller.settings
 
 		public function submit():void
 		{
-			FakeApp.instance.cookie.data.username = txti_username.text;
-			FakeApp.instance.cookie.data.key = txti_key.text;
-			FakeApp.instance.cookie.data.secret = txti_secret.text;
+			var data:Object;
+			if (txti_username)
+			{		
+				data = {
+					username: txti_username.text,
+					key: txti_key.text,
+					secret: txti_secret.text
+				};
+				
+				FakeApp.instance.settings.save(data);
+			}
+			
+			data = FakeApp.instance.settings.vo;
 
 			var consumer:OhConsumer = new OhConsumer();
-			consumer.getRequestToken(onRequestToken, FakeApp.instance.cookie.data);
+			consumer.getRequestToken(onRequestToken, data);
 
 		}
 
@@ -87,6 +88,10 @@ package com.ohlair.controller.settings
 
 				PopUpManager.addPopUp(verifyRequest, FakeApp.instance);
 				PopUpManager.centerPopUp(verifyRequest);
+			}
+			else
+			{
+				Alert.show("Ouch, something went wrong. Better tell gwoo");
 			}
 		}
 
@@ -107,8 +112,10 @@ package com.ohlair.controller.settings
 
 		public function closeVerifyAccess():void
 		{
+			var data:Object = FakeApp.instance.settings.vo;
+
 			var consumer:OhConsumer = new OhConsumer();
-			consumer.getAccessToken(onAccessToken, FakeApp.instance.cookie.data, token);
+			consumer.getAccessToken(onAccessToken, data, token);
 		}
 
 		private function onAccessToken(result:ResultSet):void
@@ -116,10 +123,12 @@ package com.ohlair.controller.settings
 			if (result.data)
 			{
 				close();
-				FakeApp.instance.cookie.data.oauth_token = result.data.oauth_token;
-				FakeApp.instance.cookie.data.oauth_token_secret = result.data.oauth_token_secret;
-
+				FakeApp.instance.settings.save(result.data);
 				Alert.show("Sweeeet, you should be good to go!");
+			}
+			else
+			{
+				Alert.show("Are you sure you authorized Ohlair?");
 			}
 		}
 	}

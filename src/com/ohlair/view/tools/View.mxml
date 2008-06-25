@@ -21,8 +21,8 @@
 
 	</mx:HBox>
 
-	<mx:Form id="form_options" />
+	<mx:Form id="form_options" paddingLeft="10"/>
 
-	<mx:VBox id="vb_response" />
+	<mx:VBox id="vb_response" width="100%" height="100%" paddingTop="10" paddingLeft="10" paddingRight="10"/>
 
 </ViewCtrl>

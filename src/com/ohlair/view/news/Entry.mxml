@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Description
+ *
+ * Ohlair
+ * Copyright 2008, Garrett Woodworth
+ *
+ * Licensed under The MIT License, http://www.opensource.org/licenses/mit-license.php
+ * Redistributions of files must retain the above copyright notice.
+ *
+ */
+ -->
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%">
+
+	<mx:DateFormatter id="dateFormatter" formatString="EEEE, MMM. D, YYYY at L:NN A"/>
+
+	<mx:Image source="{data.gravatar}" />
+
+	<mx:VBox width="100%" verticalGap="0">
+		<mx:TextArea text="{data.body}" width="100%" height="60" fontSize="14" backgroundColor="#cccccc" verticalScrollPolicy="auto" />
+
+		<mx:HBox width="100%" verticalAlign="bottom" backgroundColor="#333333">
+			<mx:LinkButton label="{data.author}" click="navigateToURL(new URLRequest(data.url), '_new')" />
+			<mx:Text text="{dateFormatter.format(data.date)}" />
+		</mx:HBox>
+
+	</mx:VBox>
+</mx:HBox>

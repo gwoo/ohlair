@@ -11,7 +11,7 @@
  *
  */
  -->
-<AddCtrl xmlns="com.ohlair.controller.messages.*" xmlns:mx="http://www.adobe.com/2006/mxml">
+<AddCtrl xmlns="com.ohlair.controller.messages.*" xmlns:mx="http://www.adobe.com/2006/mxml" styleName="main">
 
 	<mx:Form width="100%" height="100%" indicatorGap="0">
 		<mx:FormHeading label="What are you doing?" />
@@ -22,5 +22,13 @@
 			<mx:Button label="Submit" id="btn_submit" click="submit()" />
 		</mx:FormItem>
 	</mx:Form>
+
+	<mx:DataGrid id="list_previous"
+            visible = "true"
+            width="100%" height="100%" fontSize="14"
+            showHeaders="false" verticalScrollPolicy="auto"
+            paddingBottom="10" paddingTop="10" paddingLeft="10" paddingRight="10"
+
+     />
 
 </AddCtrl>
