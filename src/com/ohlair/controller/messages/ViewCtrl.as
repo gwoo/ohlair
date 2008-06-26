@@ -127,7 +127,7 @@
 
 		private function onKeyDown(event:KeyboardEvent):void
 		{
-			if (FakeApp.instance.current == "read")
+			if (FakeApp.instance.current == "Read")
 			{
 				switch(event.keyCode)
 				{
