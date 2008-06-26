@@ -108,6 +108,8 @@ package com.ohlair.controller.news
 			}
 
 			if (page == -1) {
+				page = 0;
+				__currentPage = 1;
 				__previous = new Array();
 				vb_results.removeAllChildren();
 			} else if (page == 0) {
@@ -128,7 +130,7 @@ package com.ohlair.controller.news
 		{
 			if (result.data == null)
 			{
-				Alert.show("There aint no news");
+				Alert.show("Apprently, nothing new has happend.");
 				return;
 			}
 
