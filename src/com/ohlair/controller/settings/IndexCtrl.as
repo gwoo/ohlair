@@ -15,7 +15,7 @@ package com.ohlair.controller.settings
 	import com.ohlair.model.OhConsumer;
 	import com.ohlair.view.settings.VerifyAccess;
 	import com.ohlair.view.settings.VerifyRequest;
-	
+
 	import mx.containers.TitleWindow;
 	import mx.controls.Alert;
 	import mx.controls.Button;
@@ -42,7 +42,7 @@ package com.ohlair.controller.settings
 		public function init(event:FlexEvent):void
 		{
 			if (txti_username)
-			{	
+			{
 				txti_username.text = FakeApp.instance.settings.username;
 				txti_key.text = FakeApp.instance.settings.key;
 				txti_secret.text = FakeApp.instance.settings.secret;
@@ -58,16 +58,16 @@ package com.ohlair.controller.settings
 		{
 			var data:Object;
 			if (txti_username)
-			{		
+			{
 				data = {
 					username: txti_username.text,
 					key: txti_key.text,
 					secret: txti_secret.text
 				};
-				
+
 				FakeApp.instance.settings.save(data);
 			}
-			
+
 			data = FakeApp.instance.settings.vo;
 
 			var consumer:OhConsumer = new OhConsumer();

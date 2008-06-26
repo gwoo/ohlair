@@ -45,6 +45,8 @@ package com.ohlair.controller.news
 		public var timerCount:uint = 60;
 		[Bindable] public var time:uint;
 
+		[Bindable] public var status:String;
+
 		private var __currentPage:uint = 0;
 		private var __timer:Timer;
 		private var __previous:Array = [];
@@ -58,6 +60,7 @@ package com.ohlair.controller.news
 
 			__timer = new Timer(1000);//every second
 			__timer.addEventListener(TimerEvent.TIMER, handleTimer);
+
 		}
 
 		private function init(event:FlexEvent):void
@@ -130,7 +133,7 @@ package com.ohlair.controller.news
 		{
 			if (result.data == null)
 			{
-				Alert.show("Apprently, nothing new has happend.");
+				status = "nothing new";
 				return;
 			}
 
@@ -141,6 +144,8 @@ package com.ohlair.controller.news
 					&& __previous.indexOf(item.id) == -1
 				)
 				{
+					status = "updated";
+
 					var entry:Entry = new Entry();
 					entry.data = new News(item);
 					vb_results.addChild(entry);

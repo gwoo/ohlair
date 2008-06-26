@@ -26,11 +26,13 @@
     </mx:Canvas>
 
 
-    <mx:HBox width="100%" horizontalCenter="0" paddingRight="20">
+    <mx:HBox width="100%" horizontalCenter="0" paddingRight="20" verticalAlign="middle">
 
 		<mx:LinkButton id="btn_timer" label="sync in {time} seconds" paddingTop="10"
 			click="toggleTimer()" toolTip="click to stop" />
-
+		
+		<mx:Text text="{status}" paddingTop="10"/>
+		
 		<mx:Spacer width="100%" />
 
     	<mx:LinkButton label="more" click="submit(1)" buttonMode="true" useHandCursor="true"

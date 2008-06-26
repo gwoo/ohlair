@@ -14,7 +14,7 @@ package com.ohlair.controller.tools
 	import com.fake.model.ResultSet;
 	import com.ohlair.FakeApp;
 	import com.ohlair.model.Tool;
-	
+
 	import mx.containers.Form;
 	import mx.containers.FormItem;
 	import mx.containers.VBox;
@@ -45,7 +45,7 @@ package com.ohlair.controller.tools
 		private function init(event:FlexEvent):void
 		{
 			FakeApp.instance.current = "Tools";
-			
+
 			var tool:Tool = new Tool();
 			 services = tool.services;
 		}
