@@ -137,6 +137,11 @@ package com.ohlair.controller.news
 				return;
 			}
 
+			if (__previous.length > 0)
+			{
+				var hasPrevious:Boolean = true;
+			}
+
 			for each(var item:Object in result.response.result.message)
 			{
 				if (!chk_filter.selected
@@ -148,7 +153,15 @@ package com.ohlair.controller.news
 
 					var entry:Entry = new Entry();
 					entry.data = new News(item);
-					vb_results.addChild(entry);
+
+					if (hasPrevious)
+					{
+						vb_results.addChildAt(entry, 0);
+					}
+					else
+					{
+						vb_results.addChild(entry);
+					}
 
 					if (stage.nativeWindow.active == false)
 					{
