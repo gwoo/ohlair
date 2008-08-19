@@ -29,16 +29,16 @@ package com.ohlair.model
 				gravatar = data.avatar.uri;
 				body = data.body;
 				date = data.created_at;
-				url = data.account.url;
+				url = data.account.uri;
 				author = data.account.value;
 			}
 
 		}
 
 
-		public function find(listenr:Function, account:String, args:Object=null):void
+		public function find(listener:Function, account:String, args:Object=null):void
 		{
-			call("accounts/" + account + "/news.xml", listenr, args);
+			call("accounts/" + account + "/news.xml", listener, args);
 		}
 
 	}

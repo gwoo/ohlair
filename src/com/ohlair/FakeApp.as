@@ -16,20 +16,39 @@ package com.ohlair
 	import com.ohlair.model.Settings;
 	import com.ohlair.view.settings.Index;
 
+	import flash.display.NativeWindowResize;
+	import flash.events.Event;
+	import flash.events.MouseEvent;
+
+	import mx.containers.HBox;
+	import mx.containers.TitleWindow;
+	import mx.containers.ViewStack;
+	import mx.controls.LinkButton;
 	import mx.controls.TabBar;
 	import mx.core.Application;
 	import mx.core.WindowedApplication;
+	import mx.events.CloseEvent;
 	import mx.events.FlexEvent;
 	import mx.events.ItemClickEvent;
+	import mx.managers.CursorManagerPriority;
 	import mx.managers.PopUpManager;
 
 	public class FakeApp extends WindowedApplication
 	{
 		[Bindable] public var settings:Settings;
-
 		[Bindable] public var current:String;
 
+		public var user:Object;
+
+		public var resizeBar:HBox;
+		public var window:TitleWindow;
+		public var resizeButton:LinkButton;
 		public var tabs:TabBar;
+		[Bindable] public var vs:ViewStack;
+
+		[Embed("/assets/icons/moveCursor.png")]
+  		private var moveCursor:Class;
+  		private var __currentCursor:int;
 
 		private static var _instance:FakeApp;
 		public static function get instance():FakeApp {
@@ -41,11 +60,44 @@ package com.ohlair
 			super();
 			_instance = this;
 
-			FakeApp.instance.settings = new Settings();
+			this.settings = new Settings();
 
+			addEventListener(FlexEvent.CREATION_COMPLETE, init);
 			addEventListener(FlexEvent.PREINITIALIZE, onPreinitialize);
 			Application.application.addEventListener(FlexEvent.APPLICATION_COMPLETE, onAppComplete);
 		}
+
+	    private function init(event:FlexEvent):void {
+	    	resizeBar.addEventListener(MouseEvent.MOUSE_OVER, showMoveCursor);
+	    	resizeBar.addEventListener(MouseEvent.MOUSE_DOWN, startMove);
+	    	resizeBar.addEventListener(MouseEvent.MOUSE_UP, removeMoveCursor);
+	    	resizeBar.addEventListener(MouseEvent.MOUSE_OUT, removeMoveCursor);
+	    	resizeButton.addEventListener(MouseEvent.MOUSE_DOWN, resizeWindow);
+	    	//var user:Object = settings.user();
+	    }
+
+		private function showMoveCursor(event:Event = null):void {
+			__currentCursor = cursorManager.setCursor(moveCursor,
+  				CursorManagerPriority.HIGH, 3, 2
+  			);
+  		}
+
+		private function removeMoveCursor(event:Event = null):void {
+			cursorManager.removeAllCursors();
+		}
+
+		private function resizeWindow(event:MouseEvent):void {
+			stage.nativeWindow.startResize(NativeWindowResize.BOTTOM_RIGHT);
+		}
+
+	   	private function startMove(event:MouseEvent):void {
+	   		showMoveCursor();
+	    	stage.nativeWindow.startMove();
+	    }
+
+	    private function closeEvent(event:CloseEvent):void {
+	       stage.nativeWindow.close();
+	    }
 
 		private function onPreinitialize(event:FlexEvent):void
 		{
@@ -54,10 +106,11 @@ package com.ohlair
 
 		private function onAppComplete(event:FlexEvent):void
 		{
-			current = "Post";
-
+			current = "News";
+			vs.visible = true;
 			if (!FakeApp.instance.settings.oauth_token)
 			{
+				vs.visible = false;
 				if (FakeApp.instance.settings.key && FakeApp.instance.settings.secret)
 				{
 					var settings:IndexCtrl = new IndexCtrl();
@@ -72,9 +125,11 @@ package com.ohlair
 
 		public function openSettings():void
 		{
+			vs.visible = false;
 			var settings:Index = new Index();
 			PopUpManager.addPopUp(settings, this);
-			PopUpManager.centerPopUp(settings);
+			//PopUpManager.centerPopUp(settings);
+			settings.move (0, 50);
 		}
 
 		public function tabChange(event:Event):void

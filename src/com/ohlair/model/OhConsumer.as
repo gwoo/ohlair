@@ -12,12 +12,13 @@ package com.ohlair.model
 {
 	import com.fake.model.Model;
 	import com.fake.utils.CloneUtil;
-
+	import com.ohlair.FakeApp;
+	
 	import flash.net.URLRequest;
 	import flash.net.URLRequestHeader;
 	import flash.net.URLRequestMethod;
 	import flash.net.navigateToURL;
-
+	
 	import org.iotashan.oauth.OAuthConsumer;
 	import org.iotashan.oauth.OAuthRequest;
 	import org.iotashan.oauth.OAuthSignatureMethod_HMAC_SHA1;
@@ -58,8 +59,10 @@ package com.ohlair.model
 			call(path, listener, data);
 		}
 
-		public function post(path:String, listener:Function, data:Object, args:Object):void
+		public function post(path:String, listener:Function, args:Object):void
 		{
+			var data:Object = FakeApp.instance.settings.vo;
+			
 			data["params"] = CloneUtil.clone(args);
 
 			this.config = {

@@ -1,0 +1,195 @@
+.window {
+	borderSkin: Embed(skinClass="Panel_borderSkin");
+	closeButtonSkin: Embed(skinClass="Panel_closeButtonSkin");
+	controlBarBackgroundSkin: Embed(skinClass="Panel_controlBarBackgroundSkin");
+}
+
+FormHeading {
+	color: #fff;
+}
+
+Label {
+	color:#ffffff
+}
+
+LinkButton {
+	disabledSkin: Embed(source="/assets/skins/darkroom.swf", symbol="clear");
+	downSkin: Embed(source="/assets/skins/darkroom.swf", symbol="clear");
+	overSkin: Embed(source="/assets/skins/darkroom.swf", symbol="clear");
+	upSkin: Embed(source="/assets/skins/darkroom.swf", symbol="clear");
+	color: #808080;
+	selectionColor:#FFFFFF;
+	disabledColor:#aaaaaa;
+	textRollOverColor: #FFFFFF;
+	textSelectedColor:#FFFFFF;
+	textDisabledColor: #1e1e1e;
+	fontWeight: "normal";
+	separatorColor: #808080;
+}
+
+Panel {
+	closeButtonDisabledSkin: Embed(source="/assets/skins/darkroom.swf",symbol="Panel_closeButtonDisabledSkin");
+	closeButtonDownSkin: Embed(source="/assets/skins/darkroom.swf",symbol="Panel_closeButtonDownSkin");
+	closeButtonOverSkin: Embed(source="/assets/skins/darkroom.swf",symbol="Panel_closeButtonOverSkin");
+	closeButtonUpSkin: Embed(source="/assets/skins/darkroom.swf",symbol="Panel_closeButtonUpSkin");
+	borderSkin: Embed(source="/assets/skins/darkroom.swf", symbol="Panel_borderSkin");
+	borderThicknessLeft: 10;
+	borderThicknessRight: 11;
+	borderThicknessTop: 0;
+	borderThicknessBottom: 3;
+	headerHeight: 30;
+	cornerRadius:0;
+	titleStyleName: "panelTitle";
+}
+
+.panelTitle {
+	paddingTop:6;
+	textAlign: left;
+	fontSize: 12;
+	color: #ffffff;
+	borderStyle: none;
+	borderThickness:0;
+	paddingBottom: 10;
+	fontWeight: bold;
+}
+
+.button {
+    upSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+	overSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+	downSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+	disabledSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+	selectedUpSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+	selectedOverSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+	selectedDownSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+	selectedDisabledSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+	fontFamily:"Lucida Grande";
+	fontWeight:bold;
+	fontSize:12;
+	padding-top: 4;
+	padding-left: 6;
+	padding-bottom: 4;
+	padding-right: 6;
+     cornerRadii: 4, 4, 4, 4;
+     borderColors: #666666, #333333;
+     overBorderColors: #003399, #003399;
+     selectedBorderColors: #FFFFFF, #CCCCCC;
+     borderThickness: 3;
+     borderAlpha: 0;
+     fillColors: #F4F4F4, #F4F4F4, #CCCCCC, #999999;
+     fillAlphas: 0.9, 0.5, 0.4, 0.3;
+     fillColorRatios: 0, 113, 187, 255;
+     overFillColors: #333333, #999999, #888888, #CCCCCC;
+     overFillAlphas: 0.1, 0.7, 0.7, 0.5;
+     overFillColorRatios: 0, 85, 170, 255;
+     selectedFillColors: #FFFFFF, #F4F4F4, #F4F4F4, #F4F4F4;
+     selectedFillAlphas: 0.9, 0.8, 0.7, 0.6;
+     selectedFillColorRatios: 0, 85, 183, 255;
+     color: #000000;
+     textRollOverColor: #FFFFFF;
+     textSelectedColor: #FFFFFF;
+}
+
+.close {
+    upSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+	overSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+	downSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+	disabledSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+	selectedUpSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+	selectedOverSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+	selectedDownSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+	selectedDisabledSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+	fontFamily:"Lucida Grande";
+	fontWeight:bold;
+	fontSize:12;
+	padding-top: 0;
+	padding-left: 0;
+	padding-bottom: 0;
+	padding-right: 0;
+	cornerRadii: 1, 1, 1, 1;
+	borderColors: #666666, #333333;
+	overBorderColors: #003399, #003399;
+	selectedBorderColors: #FFFFFF, #CCCCCC;
+	borderThickness: 0;
+	borderAlpha: 0;
+	fillColors: #F4F4F4, #F4F4F4, #CCCCCC, #999999;
+	fillAlphas: 0.9, 0.5, 0.4, 0.3;
+	fillColorRatios: 0, 113, 187, 255;
+	overFillColors: #333333, #999999, #888888, #CCCCCC;
+	overFillAlphas: 0.1, 0.7, 0.7, 0.5;
+	overFillColorRatios: 0, 85, 170, 255;
+	selectedFillColors: #FFFFFF, #F4F4F4, #F4F4F4, #F4F4F4;
+	selectedFillAlphas: 0.9, 0.8, 0.7, 0.6;
+	selectedFillColorRatios: 0, 85, 183, 255;
+	color: #000000;
+	textRollOverColor: #FFFFFF;
+	textSelectedColor: #FFFFFF;
+}
+
+TabBar {
+	themeColor: #cccccc;
+	color: #000000;
+	fontFamily:"Lucida Grande";
+	fontWeight:bold;
+	fontSize:12;
+	borderBottom: 1;
+}
+
+ToggleButtonBar {
+	button-style-name: "tabButton";
+}
+.tabButton {
+    upSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+	overSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+	downSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+	disabledSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+	selectedUpSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+	selectedOverSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+	selectedDownSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+	selectedDisabledSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+	fontFamily:"Lucida Grande";
+	fontWeight:bold;
+	fontSize:12;
+	padding-top: 0;
+	padding-left: 4;
+	padding-bottom: 0;
+	padding-right: 4;
+     cornerRadii: 4, 4, 0, 0;
+     borderColors: #666666, #333333;
+     overBorderColors: #003399, #003399;
+     selectedBorderColors: #FFFFFF, #CCCCCC;
+     borderThickness: 0;
+     borderAlpha: 0;
+     fillColors: #F4F4F4, #F4F4F4, #CCCCCC, #999999;
+     fillAlphas: 0.9, 0.5, 0.4, 0.3;
+     fillColorRatios: 0, 113, 187, 255;
+     overFillColors: #333333, #999999, #888888, #CCCCCC;
+     overFillAlphas: 0.1, 0.7, 0.7, 0.5;
+     overFillColorRatios: 0, 85, 170, 255;
+     selectedFillColors: #FFFFFF, #F4F4F4, #F4F4F4, #F4F4F4;
+     selectedFillAlphas: 0.9, 0.8, 0.7, 0.6;
+     selectedFillColorRatios: 0, 85, 183, 255;
+     color: #000000;
+     textRollOverColor: #FFFFFF;
+     textSelectedColor: #FFFFFF;
+}
+
+TextInput, TextArea {
+	themeColor: #000000;
+}
+
+ScrollBar {
+	downArrowDisabledSkin: Embed(source="/assets/skins/darkroom.swf", symbol="ScrollArrowDown_disabledSkin");
+	downArrowDownSkin: Embed(source="/assets/skins/darkroom.swf", symbol="ScrollArrowDown_downSkin");
+	downArrowOverSkin: Embed(source="/assets/skins/darkroom.swf", symbol="ScrollArrowDown_overSkin");
+	downArrowUpSkin: Embed(source="/assets/skins/darkroom.swf", symbol="ScrollArrowDown_upSkin");
+	thumbDownSkin: Embed(source="/assets/skins/darkroom.swf", symbol="ScrollThumb_downSkin");
+	thumbIcon: Embed(source="/assets/skins/darkroom.swf", symbol="ScrollBar_thumbIcon");
+	thumbOverSkin: Embed(source="/assets/skins/darkroom.swf", symbol="ScrollThumb_overSkin");
+	thumbUpSkin: Embed(source="/assets/skins/darkroom.swf", symbol="ScrollThumb_upSkin");
+	trackSkin: Embed(source="/assets/skins/darkroom.swf", symbol="ScrollTrack_Skin");
+	upArrowDisabledSkin: Embed(source="/assets/skins/darkroom.swf", symbol="ScrollArrowUp_disabledSkin");
+	upArrowDownSkin: Embed(source="/assets/skins/darkroom.swf", symbol="ScrollArrowUp_downSkin");
+	upArrowOverSkin: Embed(source="/assets/skins/darkroom.swf", symbol="ScrollArrowUp_overSkin");
+	upArrowUpSkin: Embed(source="/assets/skins/darkroom.swf", symbol="ScrollArrowUp_upSkin");
+
+}

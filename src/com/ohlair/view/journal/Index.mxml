@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--/* SVN FILE: $Id$ */-->
+<IndexCtrl xmlns="com.ohlair.controller.journal.*" xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:news="com.ohlair.view.news.*" xmlns:messages="com.ohlair.view.messages.*">
+
+	<messages:Add width="100%" height="150" />
+	
+	<news:Index width="100%" height="100%" />
+
+</IndexCtrl>

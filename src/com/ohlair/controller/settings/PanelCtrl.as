@@ -10,31 +10,30 @@
  */
 package com.ohlair.controller.settings
 {
-	import com.fake.controller.CanvasController;
 	import com.fake.model.ResultSet;
-	import com.fake.utils.ConfigManager;
 	import com.ohlair.FakeApp;
 	import com.ohlair.model.OhConsumer;
 	import com.ohlair.view.settings.VerifyAccess;
 	import com.ohlair.view.settings.VerifyRequest;
 	
+	import mx.containers.TitleWindow;
 	import mx.controls.Alert;
 	import mx.controls.Button;
 	import mx.controls.TextInput;
 	import mx.events.FlexEvent;
 	import mx.managers.PopUpManager;
 
-	public class IndexCtrl extends CanvasController
+	public class PanelCtrl extends TitleWindow
 	{
 		public var txti_username:TextInput;
-		[Bindable] public var txti_key:TextInput;
-		[Bindable] public var txti_secret:TextInput;
+		public var txti_key:TextInput;
+		public var txti_secret:TextInput;
 
 		public var btn_ok:Button;
 
 		public var token:Object = {};
 
-		public function IndexCtrl()
+		public function PanelCtrl()
 		{
 			super();
 			addEventListener(FlexEvent.CREATION_COMPLETE, init);
@@ -45,56 +44,35 @@ package com.ohlair.controller.settings
 			if (txti_username)
 			{
 				txti_username.text = FakeApp.instance.settings.username;
-				if (ConfigManager.instance.environment === 'dev') {
-					txti_key.text = FakeApp.instance.settings.key;
-					txti_secret.text = FakeApp.instance.settings.secret;
-				} else {
-					txti_key.visible = false;
-					txti_secret.visible = false;
-				}
+				txti_key.text = FakeApp.instance.settings.key;
+				txti_secret.text = FakeApp.instance.settings.secret;
 			}
 		}
 
 		public function close():void
 		{
-			FakeApp.instance.vs.visible = true;
 			PopUpManager.removePopUp(this);
 		}
 
 		public function submit():void
 		{
-			var data:Object = {};
+			var data:Object;
+			if (txti_username)
+			{
+				data = {
+					username: txti_username.text,
+					key: txti_key.text,
+					secret: txti_secret.text
+				};
 
-			if (txti_username && txti_username.text) {
-				data.username = txti_username.text
+				FakeApp.instance.settings.save(data);
 			}
-			if (txti_key && txti_secret && txti_key.text) {
-				data.key = txti_key.text
-				data.secret = txti_secret.text
-			}
-
-			FakeApp.instance.settings.save(data);
-
-			if (!FakeApp.instance.settings.oauth_token) {
-				data = FakeApp.instance.settings.vo;
-				var consumer:OhConsumer = new OhConsumer();
-				consumer.getRequestToken(onRequestToken, data);
-			} else {
-				close();
-			}
-		}
-
-		public function reset():void
-		{
-			FakeApp.instance.settings.save({
-				oauth_token : null,
-				oauth_token_secret: null
-			});
 
 			data = FakeApp.instance.settings.vo;
 
 			var consumer:OhConsumer = new OhConsumer();
 			consumer.getRequestToken(onRequestToken, data);
+
 		}
 
 		private function onRequestToken(result:ResultSet):void
@@ -102,14 +80,14 @@ package com.ohlair.controller.settings
 			if (result.data)
 			{
 				close();
+
 				var verifyRequest:VerifyRequest = new VerifyRequest();
 				verifyRequest.token["oauth_token"] = result.data.oauth_token;
 				verifyRequest.token["oauth_token_secret"] = result.data.oauth_token_secret;
 				verifyRequest.data = "Click OK to visit Ohloh and verify your request";
 
-				FakeApp.instance.vs.visible = false;
 				PopUpManager.addPopUp(verifyRequest, FakeApp.instance);
-				verifyRequest.move (0, 50);
+				PopUpManager.centerPopUp(verifyRequest);
 			}
 			else
 			{
@@ -128,9 +106,8 @@ package com.ohlair.controller.settings
 			verifyAccess.token = token;
 			verifyAccess.data = "If you authorized Ohlair, click OK to get the access token";
 
-			FakeApp.instance.vs.visible = false;
 			PopUpManager.addPopUp(verifyAccess, FakeApp.instance);
-			verifyAccess.move (0, 50);
+			PopUpManager.centerPopUp(verifyAccess);
 		}
 
 		public function closeVerifyAccess():void

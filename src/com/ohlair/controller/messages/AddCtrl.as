@@ -18,17 +18,15 @@ package com.ohlair.controller.messages
 	import flash.events.KeyboardEvent;
 	import flash.ui.Keyboard;
 
-	import mx.collections.ArrayCollection;
 	import mx.controls.Alert;
-	import mx.controls.DataGrid;
+	import mx.controls.Button;
 	import mx.controls.TextArea;
 	import mx.core.Application;
 	import mx.events.FlexEvent;
 
 	public class AddCtrl extends VBoxController
 	{
-		public var txta_body:TextArea;
-		public var list_previous:DataGrid;
+		[Bindable] public var txta_body:TextArea;
 
 		public function AddCtrl()
 		{
@@ -42,17 +40,25 @@ package com.ohlair.controller.messages
 			stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 		}
 
+		public function bodyClick():void {
+			if (txta_body.enabled == false) {
+				txta_body.text = '';
+			}
+			txta_body.enabled = true;
+			FakeApp.instance.current = "Post";
+		}
+
 		public function submit():void
 		{
 			if (txta_body.text == "") {
 				Alert.show("You forgot to say what you are doing");
 				return;
 			}
+
+			txta_body.enabled = false;
+
 			var message:Message = new Message();
-
-			var data:Object = FakeApp.instance.settings.vo;
-
-			message.add(onAdd, data, {'message[body]': txta_body.text});
+			message.add(onAdd, {'message[body]': txta_body.text});
 		}
 
 		private function onAdd(result:ResultSet):void
@@ -65,14 +71,6 @@ package com.ohlair.controller.messages
 			if (xmlResult..status == 'success')
 			{
 				Alert.show("Nice!");
-
-				if (!list_previous.dataProvider)
-				{
-					list_previous.dataProvider = new ArrayCollection();
-				}
-				ArrayCollection(list_previous.dataProvider).addItemAt({label: txta_body.text}, 0);
-
-				txta_body.text = "";
 			}
 			else
 			{
@@ -82,7 +80,7 @@ package com.ohlair.controller.messages
 
 		private function onKeyDown(event:KeyboardEvent):void
 		{
-			if (FakeApp.instance.current == "Post")
+			if (FakeApp.instance.current == "Post" && (txta_body && txta_body.enabled == true && txta_body.text))
 			{
 				switch(event.keyCode)
 				{

@@ -13,16 +13,16 @@
  -->
 <mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%">
 
-	<mx:DateFormatter id="dateFormatter" formatString="EEEE, MMM. D, YYYY at L:NN A"/>
-
-	<mx:Image source="{data.gravatar}" />
+	<mx:DateFormatter id="dateFormatter" formatString="EEEE at L:NN A"/>
 
 	<mx:VBox width="100%" verticalGap="0">
 		<mx:TextArea htmlText="{data.body}" width="100%" height="60" styleName="list" verticalScrollPolicy="auto" />
 
-		<mx:HBox width="100%" verticalAlign="bottom" backgroundColor="#333333">
-			<mx:LinkButton label="{data.author}" click="navigateToURL(new URLRequest(data.url), '_new')" />
-			<mx:Text text="{dateFormatter.format(data.date)}" color="#cccccc"/>
+		<mx:HBox width="100%" height="22" verticalAlign="bottom" backgroundColor="#555555"
+			paddingTop="1" paddingBottom="1" paddingLeft="1">
+			<mx:Image source="{data.gravatar}" scaleContent="true" width="20" height="20"/>
+			<mx:LinkButton height="20" label="{data.author}" styleName="simple" click="navigateToURL(new URLRequest(data.url), '_new')" />
+			<mx:Text text="{dateFormatter.format(data.date)}" paddingBottom="1" color="#888888" fontSize="9"/>
 		</mx:HBox>
 
 	</mx:VBox>

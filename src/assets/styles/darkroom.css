@@ -193,14 +193,7 @@ Application
 */
 Button
 {
-	disabledSkin: Embed(source="/assets/skins/darkroom.swf", symbol="Button_disabledSkin");
-	downSkin: Embed(source="/assets/skins/darkroom.swf", symbol="Button_downSkin");
-	overSkin: Embed(source="/assets/skins/darkroom.swf", symbol="Button_overSkin");
-	upSkin: Embed(source="/assets/skins/darkroom.swf", symbol="Button_upSkin");
-	selectedDisabledSkin: Embed(source="/assets/skins/darkroom.swf", symbol="Button_disabledSkin");
-	selectedDownSkin: Embed(source="/assets/skins/darkroom.swf", symbol="Button_upSkin");
-	selectedOverSkin: Embed(source="/assets/skins/darkroom.swf", symbol="Button_overSkin");
-	selectedUpSkin: Embed(source="/assets/skins/darkroom.swf", symbol="Button_downSkin");
+
 	color: #aaaaaa;
 	textRollOverColor: #ffffff;
 	textSelectedColor:#ffffff;

@@ -11,8 +11,8 @@
  *
  */
  -->
-<IndexCtrl xmlns="com.ohlair.controller.settings.*" xmlns:mx="http://www.adobe.com/2006/mxml"
-	width="300">
+<PanelCtrl xmlns="com.ohlair.controller.settings.*" xmlns:mx="http://www.adobe.com/2006/mxml"
+	showCloseButton="true" close="close()" width="300">
 
 	<mx:Form width="100%" height="100%" indicatorGap="0">
 		<mx:FormHeading label="Settings"/>
@@ -20,24 +20,19 @@
 			<mx:Label text="Username" />
 			<mx:TextInput id="txti_username" width="100%" />
 		</mx:FormItem>
-		<mx:FormItem width="100%" visible="{txti_key.visible}" includeInLayout="{txti_key.visible}">
+		<mx:FormItem width="100%">
 			<mx:Label text="API Key" />
 			<mx:TextInput id="txti_key" width="100%" />
 		</mx:FormItem>
-		<mx:FormItem width="100%" visible="{txti_key.visible}" includeInLayout="{txti_key.visible}">
+		<mx:FormItem width="100%" >
 			<mx:Label text="OAuth Consumer Secret" />
 			<mx:TextInput id="txti_secret" width="100%" />
 		</mx:FormItem>
-		<mx:FormItem paddingTop="10" direction="horizontal">
-			<mx:Button label="Submit" click="submit()"
-				styleName="button" buttonMode="true" useHandCursor="true"/>
-			<mx:Button label="Cancel" click="close()"
+		<mx:FormItem paddingTop="10">
+			<mx:Button label="Submit" click="submit()" 
 				styleName="button" buttonMode="true" useHandCursor="true"/>
 		</mx:FormItem>
-		<mx:LinkButton label="click here to reauthorize" click="reset()"
-				buttonMode="true" useHandCursor="true" />
-
 	</mx:Form>
 
 
-</IndexCtrl>
+</PanelCtrl>

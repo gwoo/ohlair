@@ -11,7 +11,8 @@
 package com.ohlair.model
 {
 	import com.fake.model.Model;
-
+	import com.fake.model.ResultSet;
+	
 	import flash.net.SharedObject;
 
 	public class Settings extends Model
@@ -30,8 +31,8 @@ package com.ohlair.model
 		{
 			super();
 			// You can put you own information below or allow the Settings panel to open
-			//this.key = "";
-			//this.secret = "";
+			this.key = "b5e8ceeb67ec93ed97bf3b4830da6f39bbc7ec90";
+			this.secret = "UxhXK691aJn02639gSlDelEsEJZichrTf27D3gfxoYU";
 
 			for (var prop:* in vo)
 			{
@@ -50,6 +51,14 @@ package com.ohlair.model
 			{
 				cookie.data[key] = data[key];
 			}
+		}
+		
+		public function user(result:ResultSet = null):Object
+		{
+			var consumer:OhConsumer = new OhConsumer();
+			consumer.post("/accounts/me.xml", user, {});
+			
+			return result;
 		}
 	}
 }

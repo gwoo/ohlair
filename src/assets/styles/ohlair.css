@@ -1,17 +1,29 @@
-WindowedApplication {
-	background-gradient-colors:#ccc, #f4f4f4;
+.logo {
+	up-skin: Embed(source="/assets/icons/ohloh_logo.png");
+	disabled-skin: Embed(source="/assets/icons/ohloh_logo.png");
+	over-skin: Embed(source="/assets/icons/ohloh_logo.png");
+	down-skin: Embed(source="/assets/icons/ohloh_logo.png");
+	selected-skin: Embed(source="/assets/icons/ohloh_logo.png");	
 }
+
 .h1 {
 	font-size: 30;
 	font-weight: bold;
 	color: #000;
 }
 .em {
-	font-size: 10;
-	color: #555;	
+	font-size: 9;
+	color: #888;	
 }
 .headerA {
 	color: #555;	
+}
+.headerNav {
+	color: #fff;
+	padding-bottom: 0;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 0;	
 }
 .entryTitle {
 	font-size: 16;
@@ -41,11 +53,6 @@ LinkButton.nav
 	separatorColor: #808080;
 }
 
-List {
-	background-color: #808080;
-	borderStyle: none;
-}
-
 .stack {
 	background-color: #3e3e3e;
 	border-color: #000;
@@ -59,7 +66,27 @@ List {
 }
 
 .list {
-	fontSize: 14;
+	fontSize: 11;
 	backgroundColor: #cccccc;
-	color: #fff;
+	color: #333333;
+}
+.simple {
+	padding-bottom: 0;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 0;
+}
+
+.resizeButton {
+	up-skin: Embed(source="/assets/icons/resizeHandler.png");
+	disabled-skin: Embed(source="/assets/icons/resizeHandler.png");
+	down-skin: Embed(source="/assets/icons/resizeCursor.png");
+	selected-skin: Embed(source="/assets/icons/resizeCursor.png");
+}
+.plain {
+	theme-color: #000000;
+	color: #ffffff;
+	background-alpha: 0;
+	border-alpha: 0;
+	border-thickness: 0;	
 }

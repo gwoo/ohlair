@@ -11,23 +11,17 @@
  *
  */
  -->
-<AddCtrl xmlns="com.ohlair.controller.messages.*" xmlns:mx="http://www.adobe.com/2006/mxml" styleName="main">
+<AddCtrl xmlns="com.ohlair.controller.messages.*" xmlns:mx="http://www.adobe.com/2006/mxml">
 
-	<mx:Form width="100%" height="100%" indicatorGap="0">
-		<mx:FormHeading label="What are you doing?" />
+	<mx:Form width="100%" height="100%" indicatorGap="0" paddingLeft="0" paddingRight="0">
 		<mx:FormItem width="100%" height="80">
-			<mx:TextArea id="txta_body" width="100%" height="100%" fontSize="16"/>
+			<mx:TextArea id="txta_body" width="100%" height="100%" fontSize="14"
+				click="bodyClick()" color="#000000"/>
 		</mx:FormItem>
-		<mx:FormItem paddingTop="10" width="100%" horizontalAlign="right">
-			<mx:Button label="Submit" id="btn_submit" click="submit()" />
+		<mx:FormItem paddingTop="0" width="100%" horizontalAlign="right">
+			<mx:Button label="Post" id="btn_submit"  styleName="button" click="submit()"
+				buttonMode="true" useHandCursor="true" enabled="{txta_body.enabled}"/>
 		</mx:FormItem>
 	</mx:Form>
-
-	<mx:DataGrid id="list_previous"
-            visible = "true" wordWrap="true"
-            width="100%" height="100%" fontSize="14"
-            showHeaders="false" variableRowHeight="true" verticalScrollPolicy="auto"
-            paddingBottom="10" paddingTop="10" paddingLeft="10" paddingRight="10"
-     />
 
 </AddCtrl>

@@ -11,42 +11,51 @@
  *
  */
  -->
-<FakeApp xmlns="com.ohlair.*" xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute"
-	xmlns:fx="com.fx.*" xmlns:messages="com.ohlair.view.messages.*" xmlns:tools="com.ohlair.view.tools.*" xmlns:news="com.ohlair.view.news.*" xmlns:components="com.pfp.components.*">
-	<mx:Script></mx:Script>
+<FakeApp xmlns="com.ohlair.*" xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" width="100%" height="100%"
+	showTitleBar="false" showStatusBar="false" showGripper="false" showFlexChrome="false" alwaysInFront="false"
+	autoExit="true" horizontalScrollPolicy="off" verticalScrollPolicy="off"
+	xmlns:tools="com.ohlair.view.tools.*" xmlns:journal="com.ohlair.view.journal.*"
+	xmlns:stats="com.ohlair.view.stats.*">
 
-	<mx:Style source="assets/styles/darkroom.css"/>
+	<mx:Style source="assets/styles/ohlair_skins.css"/>
 	<mx:Style source="assets/styles/ohlair.css"/>
 
-	<mx:Canvas width="100%" height="70" verticalScrollPolicy="off">
-
-		<mx:HBox horizontalGap="0" paddingTop="36" paddingLeft="10" paddingRight="10">
-			<mx:Label text="Ohlair" styleName="h1"/>
-		</mx:HBox>
-
-		<mx:HBox top="0" right="10" visible="{!settings}">
-			<mx:LinkButton label="Settings" fontSize="10" click="openSettings()" styleName="headerA"/>
-		</mx:HBox>
-
-	</mx:Canvas>
+<mx:TitleWindow id="window" styleName="window" layout="absolute" width="100%" height="100%"
+  		x="0" verticalScrollPolicy="off" horizontalScrollPolicy="off">
 
 
-	<mx:ViewStack id="vs" width="100%" height="100%" top="60" right="10" left="10"  bottom="10"
-		styleName="stack">
+	<mx:ViewStack id="vs" width="100%" height="100%" top="60" right="10" left="10"  bottom="10">
 
-		<messages:Add label="Post" width="100%" height="100%" styleName="stackItem"/>
+		<journal:Index label="Read" width="100%" height="100%" />
 
-		<messages:View label="Read" width="100%" height="100%" styleName="stackItem"/>
-
-		<news:View label="News" width="100%" height="100%" styleName="stackItem"/>
-
-		<tools:View	label="Tools" width="100%" height="100%" styleName="stackItem"/>
+<!--		<stats:Index label="Account" width="100%" height="100%" />
+-->
+		<tools:Index label="Tools" width="100%" height="100%" />
 
 	</mx:ViewStack>
 
-	<mx:TabBar id="tabs" dataProvider="{vs}" horizontalAlign="right" top="37" right="10" itemClick="tabChange(event)"
-		buttonMode="true" useHandCursor="true" />
+</mx:TitleWindow>
 
-	<mx:Label text="alpha2" styleName="em" left="90" top="50" />
+<mx:HBox id="resizeBar" width="100%" height="60" top="0" left="0" right="0" />
+
+<mx:LinkButton styleName="logo" click="openSettings()"
+	width="51" height="32" left="10" top="12"
+	useHandCursor="true" buttonMode="true"/>
+
+<mx:Label text="beta" styleName="em" left="34" top="2" />
+
+
+<mx:HBox top="12" right="10" horizontalAlign="right" horizontalGap="4">
+
+	<mx:LinkButton label="Journal" fontSize="12" click="vs.selectedIndex = 0;" styleName="button"
+		buttonMode="true" useHandCursor="true" selected="{Boolean(vs.selectedIndex == 0)}" toggle="true"/>
+<!--	<mx:LinkButton label="Stats" fontSize="12" click="vs.selectedIndex = 1" styleName="button"
+		buttonMode="true" useHandCursor="true" selected="{Boolean(vs.selectedIndex == 1)}" toggle="true"/>-->
+	<mx:LinkButton label="Tools" fontSize="12" click="vs.selectedIndex = 1" styleName="button"
+		buttonMode="true" useHandCursor="true" selected="{Boolean(vs.selectedIndex == 1)}" toggle="true" />
+</mx:HBox>
+
+<mx:LinkButton id="resizeButton" styleName="resizeButton" includeInLayout="false"
+	width="12" height="12" bottom="0" right="0"/>
 
 </FakeApp>

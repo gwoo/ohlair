@@ -13,7 +13,15 @@
  -->
 <IndexCtrl xmlns="com.ohlair.controller.settings.*" xmlns:mx="http://www.adobe.com/2006/mxml" width="300">
 	<mx:VBox height="100" width="100%" horizontalAlign="center" verticalAlign="middle">
-		<mx:Text text="{data}"/>
-		<mx:Button label="Ok" click="closeVerifyAccess()"/>
+
+		<mx:TextArea text="{data}" styleName="plain" wordWrap="true" />
+
+		<mx:HBox>
+			<mx:Button label="Ok" click="closeVerifyAccess()"
+				styleName="button" buttonMode="true" useHandCursor="true"/>
+			<mx:Button label="Try Again" click="reset()"
+				styleName="button" buttonMode="true" useHandCursor="true"/>
+		</mx:HBox>
+
 	</mx:VBox>
 </IndexCtrl>

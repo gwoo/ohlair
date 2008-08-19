@@ -65,12 +65,12 @@ package com.ohlair.model
 
 			if (args.params.length == options.length)
 			{
-
 				for (var key:String in options)
 				{
 					var str:String = "\{" + options[key] + "\}";
 					service += method.replace(new RegExp(str, "g"), args.params[key]);
 				}
+				delete(args.params);
 			}
 
 			super.call(service.substring(1), listener, args);

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Description
+ *
+ * Ohlair
+ * Copyright 2008, Garrett Woodworth
+ *
+ * Licensed under The MIT License, http://www.opensource.org/licenses/mit-license.php
+ * Redistributions of files must retain the above copyright notice.
+ *
+ */
+ -->
+<IndexCtrl xmlns="com.ohlair.controller.news.*" xmlns:mx="http://www.adobe.com/2006/mxml" verticalGap="0">
+
+	<mx:ToggleButtonBar id="nav" horizontalGap="1" dataProvider="{news_results}" useHandCursor="true" buttonMode="true"/>
+	<mx:HRule strokeWidth="1" width="100%" />
+
+	<mx:ControlBar id="account_form" width="100%" horizontalAlign="left" paddingBottom="10" paddingTop="0" height="40"
+		visible="false" includeInLayout="false">
+
+		<mx:Label text="account" width="50"/>
+		<mx:TextInput id="txti_account" width="140"/>
+		<mx:Button label="go" click="submit(-1)" 
+			styleName="button" buttonMode="true" useHandCursor="true"/>
+    </mx:ControlBar>
+
+	<mx:ViewStack id="news_results" width="100%" height="100%" horizontalScrollPolicy="off" creationPolicy="all">
+		<mx:Canvas id="cv_news" label="News" width="100%" height="100%" horizontalScrollPolicy="off">
+    		<mx:VBox id="vb_news" width="100%" paddingBottom="10" paddingRight="18" visible="false"/>
+    	</mx:Canvas>
+
+    	<mx:Canvas id="cv_me" label="Me" width="100%" height="100%" horizontalScrollPolicy="off">
+    		<mx:VBox id="vb_me" width="100%" paddingBottom="10" paddingRight="18" visible="false"/>
+    	</mx:Canvas>
+
+		<mx:Canvas id="cv_all" label="All" width="100%" height="100%" horizontalScrollPolicy="off">
+    		<mx:VBox id="vb_all" width="100%" paddingBottom="10" paddingRight="18" visible="false"/>
+    	</mx:Canvas>
+
+	</mx:ViewStack>
+
+
+    <mx:HBox width="100%" horizontalCenter="0" verticalAlign="middle" horizontalScrollPolicy="off">
+
+		<mx:LinkButton id="btn_timer" label="sync in {time} seconds"
+			click="toggleTimer()" toolTip="click to stop" paddingLeft="0"/>
+
+		<mx:Text text="{status}" />
+
+		<mx:Spacer width="100%" />
+		
+		<mx:LinkButton label="√" styleName="simple" click="submit(-1)" paddingRight="-37" />
+		
+    	<!--<mx:LinkButton label="more" click="submit(1)" buttonMode="true" useHandCursor="true"
+    		fontSize="20" visible="{vb_all.visible}"/>-->
+
+	</mx:HBox>
+
+</IndexCtrl>
