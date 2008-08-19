@@ -73,7 +73,6 @@ package com.ohlair
 	    	resizeBar.addEventListener(MouseEvent.MOUSE_UP, removeMoveCursor);
 	    	resizeBar.addEventListener(MouseEvent.MOUSE_OUT, removeMoveCursor);
 	    	resizeButton.addEventListener(MouseEvent.MOUSE_DOWN, resizeWindow);
-	    	//var user:Object = settings.user();
 	    }
 
 		private function showMoveCursor(event:Event = null):void {
@@ -128,7 +127,6 @@ package com.ohlair
 			vs.visible = false;
 			var settings:Index = new Index();
 			PopUpManager.addPopUp(settings, this);
-			//PopUpManager.centerPopUp(settings);
 			settings.move (0, 50);
 		}
 
